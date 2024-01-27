@@ -127,7 +127,6 @@ async function run() {
     // Get contests based on search
     app.get("/contests/search/:search", async (req, res) => {
       const search = req.params.search;
-      console.log(capitalize(search));
       const result = await contestCollection
         .find({ type: capitalize(search) })
         .toArray();
@@ -144,7 +143,6 @@ async function run() {
         query.type = type;
       }
 
-      console.log(type);
       const result = await contestCollection.find(query).toArray();
       res.send(result);
     });
